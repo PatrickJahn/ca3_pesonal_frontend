@@ -3,6 +3,7 @@ import facade from "./apiFacade";
 import StarWars from "./starWars";
 import WelcomePage from "./welcomePage";
 import { Switch, Route, NavLink } from "react-router-dom";
+import LikedMovies from "./likedMovies";
 
 function Header({loggedIn}) {
   return (
@@ -25,6 +26,11 @@ function Header({loggedIn}) {
           </NavLink>
         </li>
         )}
+         <li>
+          <NavLink activeClassName="selected" to="/LikedMovies">
+            Liked Movies
+          </NavLink>
+        </li>
   
       </ul>
     </div>
@@ -44,7 +50,7 @@ function StarWarsPage() {
   const [fetchedDataError, setfetchedDataError] = useState("");
 
   useEffect(() => {
-    facade.fetchStarWarsData().then((data) => setfetchedData(data)).catch(err => err.fullError).then(err => setfetchedDataError(err));
+    facade.fetchStarWarsData().then((data) => {setfetchedData(data); console.log("HERE",data)}).catch(err => err.fullError).then(err => setfetchedDataError(err));
   }, []);
 
   if(fetchedDataError){
@@ -140,7 +146,7 @@ function LoggedIn() {
   const jwt = require("jsonwebtoken");
   const token = localStorage.getItem("jwtToken");
   const role = jwt.decode(token).roles;
-
+  console.log(jwt.decode(token))
   let roleToFetch = role;
   if (roleToFetch === "admin,user") {
     roleToFetch = "admin";
@@ -173,6 +179,9 @@ function App() {
         </Route>
         <Route exact path="/StarWarsPage">
           <StarWarsPage />
+        </Route>
+        <Route exact path="/LikedMovies">
+          <LikedMovies />
         </Route>
       </Switch>
     </div>

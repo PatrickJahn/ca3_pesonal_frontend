@@ -38,3 +38,51 @@ ul.header li a:hover:not(.active) {
 .selected {
   background-color: black;
 }
+
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 20%;
+  margin: 20px;
+  border-radius: 5px; /* 5px rounded corners */
+  display: inline-block;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+
+}
+.card p {
+ font-size: small;
+
+}
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px;
+  text-align: center;
+}
+
+.button {
+  background-color: cornflowerblue; /* Green */
+  border: none;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+    border-radius: 20px;
+cursor: pointer;
+}
+
+.button:hover {background-color: dodgerblue}
+

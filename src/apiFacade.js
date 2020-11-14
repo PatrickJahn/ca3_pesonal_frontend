@@ -26,7 +26,17 @@ function apiFacade() {
 
   const fetchStarWarsData = () => {
     const options = makeOptions("GET", true); //True add's the token
-    return fetch(URL + "/api/info/filmsparallel",options).then(handleHttpErrors);
+    return fetch(URL + "/api/info/allfilms",options).then(handleHttpErrors);
+  };
+
+  const likeMovie = (body) => {
+    const options = makeOptions("POST", true, body); //True add's the token
+    return fetch(URL + "/api/info/likefilm",options).then(handleHttpErrors);
+  };
+
+  const dislikeMovie = (body) => {
+    const options = makeOptions("POST", true, body); //True add's the token
+    return fetch(URL + "/api/info/dislikefilm",options).then(handleHttpErrors);
   };
 
   const makeOptions = (method, addToken, body) => {
@@ -68,6 +78,8 @@ function apiFacade() {
     logout,
     fetchData,
     fetchStarWarsData,
+    likeMovie,
+    dislikeMovie,
   };
 }
 const facade = apiFacade();
