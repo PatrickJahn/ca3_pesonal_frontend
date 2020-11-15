@@ -1,3 +1,3 @@
-const URL = "http://localhost:8080/jpareststarter"
+const URL = "https://patrickcph.dk/ca3"
  
 export default URL;

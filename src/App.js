@@ -26,11 +26,12 @@ function Header({loggedIn}) {
           </NavLink>
         </li>
         )}
+         {loggedIn && (
          <li>
           <NavLink activeClassName="selected" to="/LikedMovies">
             Liked Movies
           </NavLink>
-        </li>
+        </li>)}
   
       </ul>
     </div>
@@ -50,7 +51,7 @@ function StarWarsPage() {
   const [fetchedDataError, setfetchedDataError] = useState("");
 
   useEffect(() => {
-    facade.fetchStarWarsData().then((data) => {setfetchedData(data); console.log("HERE",data)}).catch(err => err.fullError).then(err => setfetchedDataError(err));
+    facade.fetchStarWarsData().then((data) => {setfetchedData(data); }).catch(err => err.fullError).then(err => setfetchedDataError(err));
   }, []);
 
   if(fetchedDataError){
